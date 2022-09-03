@@ -257,6 +257,7 @@ def read_ratings(name):
         
      
         model_df['rating'] = model_df['rating'].astype(float)
+        model_df['rating'] = (model_df['rating'] - 1) / 2
         trainset, testset = data_split(model_df)
         n_users = max(model_df['user'])+1 ## This is the number of users
         n_attribute_types = 2
@@ -286,6 +287,7 @@ def read_ratings(name):
         df = transform_index(df,'UserID')
         df = transform_index(df,'ItemID')
         df = df[['UserID', 'ItemID', 'artist', 'category_id', 'Rating']]
+        df['Rating'] = (df['Rating'] - 1) / 2
         trainset, testset = data_split(df)
         n_users = len(df['UserID'].value_counts())
         n_attribute_types = 2
@@ -352,7 +354,7 @@ def read_ratings(name):
         hehe['user_rating'] = hehe['user_rating'].astype('float')
         hehe = transform_index(hehe,'user_id')
         hehe = transform_index(hehe,'movie')
-        
+        hehe['user_rating'] = (hehe['user_rating'] - 1) / 2
         
         n_users = max(hehe['user_id']) + 1
         trainset, testset = data_split(hehe)
