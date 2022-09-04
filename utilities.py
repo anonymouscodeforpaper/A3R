@@ -28,6 +28,7 @@ def RMSE(data, model,rate,name):  ### this function returns RMSE, MAE, precicion
         directors_id = data.iloc[:, 3]
         rating = torch.FloatTensor(
         data.iloc[:, 4].values).to(DEVICE)
+        rating = (rating + 1) * 2 + 1
         prediction,scores,contribute_actors,contribute_directors,cnm = model(users,actors_id, directors_id,rate)
         prediction = (prediction + 1) / 2 + 1
         rmse = loss_func(prediction, rating)
@@ -40,6 +41,7 @@ def RMSE(data, model,rate,name):  ### this function returns RMSE, MAE, precicion
         directors_id = data.iloc[:, 3]
         rating = torch.FloatTensor(
         data.iloc[:, 4].values).to(DEVICE)
+        rating = (rating + 1) * 2 + 1
         prediction,scores,contribute_actors,contribute_directors,cnm = model(users,actors_id, directors_id,rate)
         prediction = (prediction + 1) / 2 + 1
         rmse = loss_func(prediction, rating)
@@ -53,6 +55,7 @@ def RMSE(data, model,rate,name):  ### this function returns RMSE, MAE, precicion
         directors_id = data.iloc[:, 3]
         genres_id = data.iloc[:, 4]
         rating = torch.FloatTensor(data.iloc[:, 5].values).to(DEVICE)
+        rating = (rating + 1) * 2 + 1
         prediction,scores,contribute_actors,contribute_directors,contribute_genres,cnm = model(users,actors_id, directors_id, genres_id)
         prediction = (prediction + 1) / 2 + 1
         rmse = loss_func(prediction, rating)
