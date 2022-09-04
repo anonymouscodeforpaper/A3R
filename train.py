@@ -56,10 +56,10 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                     trainset.iloc[:, 4].loc[indexs].values).to(DEVICE)
-                rating = (rating + 1) * 2 + 1
+                
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
-                prediction = (prediction + 1) / 2 + 1
+                
 
                 err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
 
@@ -105,10 +105,10 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                     trainset.iloc[:, 4].loc[indexs].values).to(DEVICE)
-                rating = (rating + 1) * 2 + 1
+                
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
-                prediction = (prediction + 1) / 2 + 1
+                
 
                 err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
 
@@ -155,11 +155,11 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                 trainset.iloc[:, 5].loc[indexs].values).to(DEVICE)
-                rating = (rating + 1) * 2 + 1
+                
                 
                 prediction, scores, contribute_actors, contribute_directors, contribute_genres,cnm = model(
                 users, actors_id, directors_id, genres_id,rate)
-                prediction = (prediction + 1) / 2 + 1
+                
                 
                 
                 err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
