@@ -56,6 +56,7 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                     trainset.iloc[:, 4].loc[indexs].values).to(DEVICE)
+                rating = (rating + 1) * 2 + 1
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
                 prediction = (prediction + 1) / 2 + 1
@@ -104,6 +105,7 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                     trainset.iloc[:, 4].loc[indexs].values).to(DEVICE)
+                rating = (rating + 1) * 2 + 1
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
                 prediction = (prediction + 1) / 2 + 1
@@ -153,6 +155,7 @@ def train(args):
                 
                 rating = torch.FloatTensor(
                 trainset.iloc[:, 5].loc[indexs].values).to(DEVICE)
+                rating = (rating + 1) * 2 + 1
                 
                 prediction, scores, contribute_actors, contribute_directors, contribute_genres,cnm = model(
                 users, actors_id, directors_id, genres_id,rate)
