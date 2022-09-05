@@ -3,6 +3,13 @@
 
 This is the implementation of our paper titled "A<sup>3</sup>R : Argumentative explanations for recommendations"  in DSAA 2023
 
+## Example of A<sup>3</sup>R
+
+![A toy example in book recommendation showing how A<sup>3</sup>R works. The thickness of the arrow reflects the importance of attribute type. In this toy example, the user accords more importance to the genre of the book.](https://github.com/anonymouscodeforpaper/A3R/blob/main/framework.png)
+
+A toy example in book recommendation showing how A<sup>3</sup>R works. The thickness of the arrow reflects the importance of attribute type. In this toy example, the user accords more importance to the genre of the book.
+
+## Strusture of code
 -- In data_loader.py, we preprocess the dataset and returns the training set, testset
 
 -- utilities.py contains the function necessary for data processing and model training
@@ -11,7 +18,7 @@ This is the implementation of our paper titled "A<sup>3</sup>R : Argumentative e
 To run the code, python3 main.py--name = 'book', this is to run on the Dbook2014 dataset, for CarMusic, python3 main.py--name = 'book', for the three movie datasets, python3 main.py--name = 'movie'
 
 
-Datasets:
+## Datasets:
 
 -- The source for Carmusic: L. Baltrunas, M. Kaminskas, B. Ludwig, O. Moling, F. Ricci, A. Aydin,K.-H. L ̈uke, and R. Schwaiger, “Incarmusic: Context-aware music recommendations in a car,” in International conference on electronic commerce and web technologies. Springer, 2011, pp. 89–100.
 
