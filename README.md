@@ -1,7 +1,7 @@
 # A<sup>3</sup>R
 
 
-This is the implementation of our paper titled "A<sup>3</sup>R : Argumentative explanations for recommendations"  in DSAA 2023
+This is the implementation of our paper titled "A<sup>3</sup>R : Argumentative explanations for recommendations"  submitted to DSAA 2023
 
 ## Example of A<sup>3</sup>R
 
