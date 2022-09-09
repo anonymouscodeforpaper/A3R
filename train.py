@@ -38,7 +38,7 @@ def train(args):
             num_example = len(trainset)
             indices = list(range(num_example))
             for i in tqdm(range(0, num_example, args.batch_size)):
-                optimizer.zero_grad()
+                
                 indexs = indices[i:min(i+args.batch_size, num_example)]
                 
                 
@@ -59,6 +59,7 @@ def train(args):
                 
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
+                optimizer.zero_grad()
                 
 
                 err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
@@ -88,7 +89,6 @@ def train(args):
             num_example = len(trainset)
             indices = list(range(num_example))
             for i in tqdm(range(0, num_example, args.batch_size)):
-                optimizer.zero_grad()
                 indexs = indices[i:min(i+args.batch_size, num_example)]
                 
                 users_index = trainset.iloc[:, 0].loc[indexs].values
@@ -108,6 +108,7 @@ def train(args):
                 
                 prediction, scores, contribute_actors, contribute_directors, cnm = model(
                     users, actors_id, directors_id,rate)
+                optimizer.zero_grad()
                 
 
                 err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
@@ -138,7 +139,7 @@ def train(args):
             num_example = len(trainset)
             indices = list(range(num_example))
             for i in tqdm(range(0, num_example, args.batch_size)):
-                optimizer.zero_grad()
+               
                 indexs = indices[i:min(i+args.batch_size, num_example)]
                 
                 users_index = trainset.iloc[:, 0].loc[indexs].values
@@ -159,6 +160,7 @@ def train(args):
                 
                 prediction, scores, contribute_actors, contribute_directors, contribute_genres,cnm = model(
                 users, actors_id, directors_id, genres_id,rate)
+                optimizer.zero_grad()
                 
                 
                 
