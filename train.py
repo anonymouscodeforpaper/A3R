@@ -29,9 +29,9 @@ def train(args):
     if args.name == 'book':
         model = aspect_augumentation_book(
             n_user, n_attributes, n_attribute_types, args.dim).to(DEVICE)
-        optimizer = torch.optim.Adam(params=model.parameters(), lr=args.lr)
+        optimizer = torch.optim.Adam(params=model.parameters(), lr=lr,weight_decay=args.l2_weight)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=5, threshold=0.005, threshold_mode='abs')
+        optimizer, mode='min', factor=0.5, patience=10, threshold_mode='abs',threshold = 0.005)
         for epoch in range(args.n_epochs):
             model.train()
             t1 = time.time()
@@ -62,8 +62,7 @@ def train(args):
                 optimizer.zero_grad()
                 
 
-                err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
-
+                err = loss_func(prediction, rating) 
                 err.backward()
                 optimizer.step()
             t2 = time.time()
@@ -80,9 +79,9 @@ def train(args):
     if args.name == 'music':
         model = aspect_augumentation_music(
             n_user, n_attributes, n_attribute_types, args.dim).to(DEVICE)
-        optimizer = torch.optim.Adam(params=model.parameters(), lr=args.lr)
+        optimizer = torch.optim.Adam(params=model.parameters(), lr=lr,weight_decay=args.l2_weight)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=5, threshold=0.005, threshold_mode='abs')
+        optimizer, mode='min', factor=0.5, patience=10, threshold_mode='abs',threshold = 0.005)
         for epoch in range(args.n_epochs):
             model.train()
             t1 = time.time()
@@ -111,8 +110,7 @@ def train(args):
                 optimizer.zero_grad()
                 
 
-                err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
-
+                err = loss_func(prediction, rating) 
                 err.backward()
                 optimizer.step()
             t2 = time.time()
@@ -130,9 +128,9 @@ def train(args):
     else:
         model = aspect_augumentation_movie(
             n_user, n_attributes, n_attribute_types, args.dim).to(DEVICE)
-        optimizer = torch.optim.Adam(params=model.parameters(), lr=args.lr)
+        optimizer = torch.optim.Adam(params=model.parameters(), lr=lr,weight_decay=args.l2_weight)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=5, threshold=0.005, threshold_mode='abs')
+        optimizer, mode='min', factor=0.5, patience=10, threshold_mode='abs',threshold = 0.005)
         for epoch in range(args.n_epochs):
             model.train()
             t1 = time.time()
@@ -164,8 +162,7 @@ def train(args):
                 
                 
                 
-                err = loss_func(prediction, rating) + args.l2_weight * ((model.user_factors.weight*model.user_factors.weight).sum() + (model.entity_factors.weight*model.entity_factors.weight).sum() +(model.relation_k.weight*model.relation_k.weight).sum())
-
+                err = loss_func(prediction, rating) 
                 err.backward()
                 optimizer.step()
             t2 = time.time()
