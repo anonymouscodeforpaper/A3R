@@ -26,3 +26,8 @@ To run the code, python3 main.py--name = 'book', this is to run on the Dbook2014
 
 -- The source for Netflix, MovieLens Development (Dev.) and the MovieLens 100K, we reuse the version provided in A. Rago, O. Cocarascu, C. Bechlivanidis, D. Lagnado, and F. Toni, “Argumentative explanations for interactive recommendations,” Artificial Intelligence, vol. 296, p. 103506, 2021.
 
+## Other files
+
+Notebook NETFLIX: This file shows how to cluster the users in the NETFLIX dataset with the model learned. 
+model_0.01_32_1e-06_[256].pkl: This file contains the parameters of the best model.
+
