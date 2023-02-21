@@ -31,3 +31,6 @@ To run the code, python3 main.py--name = 'book', this is to run on the Dbook2014
 Notebook NETFLIX: This file shows how to cluster the users in the NETFLIX dataset with the model learned. 
 model_0.01_32_1e-06_[256].pkl: This file contains the parameters of the best model.
 
+## Updates
+
+After the conference, we found that with some more optimization, the results of our models can be further improved. See the updates file.
